@@ -1,0 +1,33 @@
+
+// Configuraciones
+@import './base/settings';
+@import './base/base';
+
+// Components
+@import './components/auth';
+@import './components/buttons';
+@import './components/link';
+@import './components/journal';
+@import './components/nothing';
+@import './components/notes.scss';
+
+
+// body {
+//     background-color: #282c34;
+//     color: white;
+//     margin: 0;
+//     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+//       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+//       sans-serif;
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+//   }
+// // .container{
+// //     display: flex;
+// //     align-items: center;
+// //     justify-content: center;
+// //     padding: 0px;
+// //     min-height: 100vh;
+
+// // }
+  
