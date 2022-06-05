@@ -1,3 +1,30 @@
+## Instalar Sass
+```
+    npm i node-sass
+```
+## Instalar redux
+```
+    npm i react-redux redux
+```
+## Instalar redux toolkit
+```
+    npm install @reduxjs/toolkit
+```
+## Firebase:
+-Compilación
+    - Authentication
+        -Activar usuario y contraseña
+        -Activar google singin
+```
+    npm install firebase@7.14.5
+```
+## Instalar thunk
+```
+    npm i --save redux-thunk@2.3.0
+```
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

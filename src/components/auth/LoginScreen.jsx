@@ -1,32 +1,75 @@
 import React from 'react'
+import { useDispatch } from "react-redux";
+
+
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm';
+import { 
+  // login, 
+  startGoogleLogin, 
+  startLoginEmailPassword } from '../../actions/auth';
 
 export const LoginScreen = () => {
+
+  const dispatch = useDispatch();
+
+
+
+  const [ values, handleInputChange, reset ] = useForm( {
+      email : 'sergio@sergio.com',
+      password: '123456'
+  });
+
+
+  const { email, password } = values;
+  // const [ viewPassword, setViewPassword ] = useState(false);
+
+  // const handleViewPassword = () => {
+  //   setViewPassword(!viewPassword);
+  //   // type={ viewPassword ? 'text' : 'password' }
+  // }
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(startLoginEmailPassword(email, password));
+    reset();
+  }
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
+  }
+
   return (
     <div>
         <h3 className='auth__title'>Login</h3>
         <form autoComplete='off'>
           <input 
             className='auth__input'
-            type="text" 
+            type='text' 
             placeholder='Email'
-            name='email'/>
+            name='email'
+            value={ email }
+            onChange={ handleInputChange }/>
 
           <input 
             className='auth__input'
-            type="password" 
+            type='password' 
             placeholder='Password'
-            name='password'/>
+            name='password'
+            value={ password }
+            onChange={ handleInputChange } /> 
 
           <button
             className='btn btn-primary btn-block'
             disabled= { false }
-            type='submit'>
+            type='submit'
+            onClick={ handleLogin }>
               Login
           </button>
 
 
-          <div className='auth__social-networks' >
+          <div 
+            className='auth__social-networks' 
+            onClick={ handleGoogleLogin }>
             <p>Login with social networks</p>
             
             <div className="google-btn">
