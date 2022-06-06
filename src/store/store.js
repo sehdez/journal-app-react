@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 
 // import { combineReducers, legacy_createStore as createStore } from 'redux'
 import { authReducer } from '../reducers/authReducer'
+import { uiReducer } from '../reducers/uiReducer'
 
 // const reducers = combineReducers({
 //     auth: authReducer
@@ -16,7 +17,8 @@ import { authReducer } from '../reducers/authReducer'
 
 export const store = configureStore({
     reducer: {
-        auth: authReducer
+        auth: authReducer,
+        ui: uiReducer
     }
 }, [thunk])
 

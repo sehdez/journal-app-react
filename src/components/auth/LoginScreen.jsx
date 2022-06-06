@@ -1,6 +1,5 @@
-import React from 'react'
-import { useDispatch } from "react-redux";
-
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm';
@@ -12,27 +11,27 @@ import {
 export const LoginScreen = () => {
 
   const dispatch = useDispatch();
+  const { isLoading } = useSelector(state => state.ui);
+  console.log(isLoading);
 
 
-
-  const [ values, handleInputChange, reset ] = useForm( {
+  const [ values, handleInputChange ] = useForm( {
       email : 'sergio@sergio.com',
       password: '123456'
   });
 
 
   const { email, password } = values;
-  // const [ viewPassword, setViewPassword ] = useState(false);
+  const [ viewPassword, setViewPassword ] = useState(false);
 
-  // const handleViewPassword = () => {
-  //   setViewPassword(!viewPassword);
-  //   // type={ viewPassword ? 'text' : 'password' }
-  // }
+  const handleViewPassword = ( e ) => {
+    e.preventDefault();
+    setViewPassword(!viewPassword);
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(startLoginEmailPassword(email, password));
-    reset();
   }
   const handleGoogleLogin = () => {
     dispatch(startGoogleLogin());
@@ -52,21 +51,28 @@ export const LoginScreen = () => {
 
           <input 
             className='auth__input'
-            type='password' 
+            type={ viewPassword ? 'text' : 'password' } 
             placeholder='Password'
             name='password'
             value={ password }
             onChange={ handleInputChange } /> 
+            
+          <button 
+            type='button'
+            onClick={ handleViewPassword } 
+            className='btn btn-primary mb-1'
+            >
+              Ver contraseña
+            </button>
 
           <button
             className='btn btn-primary btn-block'
-            disabled= { false }
+            disabled= { isLoading }
             type='submit'
             onClick={ handleLogin }>
               Login
           </button>
-
-
+          
           <div 
             className='auth__social-networks' 
             onClick={ handleGoogleLogin }>

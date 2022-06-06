@@ -3,7 +3,7 @@ export const useFetch = ( url ) => {
 
     const isMounted = useRef(true)
 
-    const [state, setState] = useState<UseState>({
+    const [state, setState] = useState({
         // data   : [{ author:'', quote:'', series:''}],
         data: null,
         loading: true,
